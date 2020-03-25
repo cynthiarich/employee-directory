@@ -7,7 +7,7 @@ const ListContainer = () => {
     const employees = useContext(employeeContext);
     const [search, updateSearch] = useState({});
 
-    function handleSearch(event){
+    function handleSearch(event) {
         updateSearch(event.target.value)
     }
 
@@ -23,7 +23,8 @@ const ListContainer = () => {
                             <input className="form-control mr-sm-2" type="search" onChange={handleSearch} placeholder="Search" aria-label="Search" />
                             <button className="btn btn-outline-secondary my-2 my-sm-0 mr-4" type="submit" onClick={(event) => {
                                 event.preventDefault();
-                                employees.onClick(search)}}>Search</button>
+                                employees.onClick(search)
+                            }}>Search</button>
                             <div className="form-check">
                                 <input className="form-check-input mr-2" type="radio" onChange={() => employees.onChange("all")} name="filterRadios" id="allRadio" value="all" checked={employees.type === "all"} />
                                 <label className="form-check-label mr-2" htmlFor="allRadio">
@@ -31,13 +32,13 @@ const ListContainer = () => {
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input mr-2" type="radio" onChange={() => employees.onChange("birthday")} name="filterRadios" id="bdayRadio" value="birthday" checked={employees.type === "birthday"}/>
+                                <input className="form-check-input mr-2" type="radio" onChange={() => employees.onChange("birthday")} name="filterRadios" id="bdayRadio" value="birthday" checked={employees.type === "birthday"} />
                                 <label className="form-check-label mr-2" htmlFor="bdayRadio">
                                     Birthdays
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input mr-2" type="radio" onChange={() => employees.onChange("anniversary")} name="filterRadios" id="annivRadio" value="anniversary" checked={employees.type === "anniversary"}/>
+                                <input className="form-check-input mr-2" type="radio" onChange={() => employees.onChange("anniversary")} name="filterRadios" id="annivRadio" value="anniversary" checked={employees.type === "anniversary"} />
                                 <label className="form-check-label mr-2" htmlFor="annivRadio">
                                     Anniversaries
                                 </label>
@@ -46,9 +47,7 @@ const ListContainer = () => {
                     </div>
                 </div>
             </div>
-            <employeeContext.Provider value={employees}>
-                <EmployeeList />
-            </employeeContext.Provider>
+            <EmployeeList />
         </div>
     )
 }

@@ -17,7 +17,7 @@ const EmployeeList = () => {
             const date = new Date();
             const offset = employee.timezone.split(":");
             return (
-                <div className="col-12 mb-2 ml-3 mr-3" key={index}>
+                <div className="col-12 mb-2 mx-1" key={index}>
                     <div className="card" >
                         <div className="card-body">
                             <h5 className="card-title">{employee.firstName} {employee.lastName}</h5>
