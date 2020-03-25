@@ -49,15 +49,17 @@ const EmployeeList = () => {
                 return (
                     <div className="col-12 mb-2 mx-1" key={index}>
                         <div className="card">
-                            <div className="card-body">
-                                <h5 className="card-title">{employee.firstName} {employee.lastName}</h5>
-                                <img src={employee.photo} className="img-thumbnail float-left mr-3" alt={`${employee.firstName} ${employee.lastName}`} />
+                            <div className="card-body row">
+                                <h5 className="card-title col-12">{employee.firstName} {employee.lastName}</h5>
+                                <img src={employee.photo} className="img-thumbnail float-left mr-3 col-lg-2 col-md-4 col-sm-6" alt={`${employee.firstName} ${employee.lastName}`} />
+                                <div className="col-lg-9 col-md-6 col-sm-6">
                                 <p className="card-text mb-0"><i className="fa fa-globe"></i>&nbsp;{employee.city}, {employee.state}</p>
                                 <p className="card-text mb-0"><i className="fa fa-clock-o"></i>&nbsp;Local: <Moment add={{ hours: offset[0] }} format="HH:mm">{date}</Moment></p>
                                 <p className="card-text mb-0"><i className="fa fa-envelope"></i>&nbsp;{employee.email}</p>
                                 <p className="card-text mb-0"><i className="fa fa-phone"></i>&nbsp;{employee.phone}</p>
                                 <p className="card-text mb-0"><i className="fa fa-birthday-cake"></i>&nbsp;Birthday: <Moment format="MMM DD">{employee.dob}</Moment></p>
                                 <p className="card-text mb-0"><i className="fa fa-glass"></i>&nbsp;Anniversary: <Moment format="MMM DD">{employee.anniversary}</Moment></p>
+                                </div>
                             </div>
                         </div>
                     </div>
