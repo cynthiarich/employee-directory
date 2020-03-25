@@ -5,7 +5,7 @@ import Marker from './Marker';
 import './index.css';
 
 const MapContainer = () => {
-    const employees  = useContext(employeeContext);
+    const employees = useContext(employeeContext);
     //set the min/max range of lat and lon
     const latMin = 25761;
     const latMax = 47608;
@@ -24,13 +24,12 @@ const MapContainer = () => {
     return (
         <div id="map">
             <GoogleMap
-                bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_API_KEY}}
+                bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_API_KEY }}
                 defaultCenter={defaultProps.center}
                 defaultZoom={defaultProps.zoom}
                 yesIWantToUseGoogleMapApiInternals
-              >
+            >
                 {employees.map((employee, index) => {
-                    console.log(`============create a marker for ${employee.firstName}=============`)
                     let lat = (parseFloat(employee.latitude) * 1000).toFixed(3);
                     let lng = (parseFloat(employee.longitude) * 1000).toFixed(3);
                     if (lat < latMax && lat > latMin) {
@@ -45,19 +44,18 @@ const MapContainer = () => {
                     else {
                         lng = (Math.floor(Math.random() * (lngMax - lngMin + 1)) + lngMin) / 1000;
                     }
-                    console.log(lat, lng)
-                    
+
                     return (
-                  
-                    <Marker
-                        key={index}
-                        text={`${employee.firstName} ${employee.lastName}`}
-                        lat={lat}
-                        lng={lng}
-                    />
+
+                        <Marker
+                            key={index}
+                            text={`${employee.firstName} ${employee.lastName}`}
+                            lat={lat}
+                            lng={lng}
+                        />
                     )
-                    })}
-              </GoogleMap>
+                })}
+            </GoogleMap>
         </div>
     )
 }

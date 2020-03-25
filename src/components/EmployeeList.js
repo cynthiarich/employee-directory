@@ -41,12 +41,6 @@ const EmployeeList = () => {
         results = employees.map((employee, index) => employee)
     }
 
-    console.log("==============search=============")
-    console.log(search)
-    console.log("==============type=============")
-    console.log(type)
-    console.log("==============results=============")
-    console.log(results)
     if (results.length > 0){
         return ( 
             results.map((employee, index) => {
