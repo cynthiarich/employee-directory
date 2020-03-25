@@ -5,7 +5,7 @@ import Marker from './Marker';
 import './index.css';
 
 const MapContainer = () => {
-    const { allemployees } = useContext(employeeContext);
+    const employees  = useContext(employeeContext);
     //set the min/max range of lat and lon
     const latMin = 25761;
     const latMax = 47608;
@@ -29,7 +29,7 @@ const MapContainer = () => {
                 defaultZoom={defaultProps.zoom}
                 yesIWantToUseGoogleMapApiInternals
               >
-                {allemployees.map((employee, index) => {
+                {employees.map((employee, index) => {
                     console.log(`============create a marker for ${employee.firstName}=============`)
                     let lat = (parseFloat(employee.latitude) * 1000).toFixed(3);
                     let lng = (parseFloat(employee.longitude) * 1000).toFixed(3);

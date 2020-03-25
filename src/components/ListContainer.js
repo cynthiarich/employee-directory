@@ -1,15 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import EmployeeList from './EmployeeList';
-import employeeContext from '../utils/EmployeeContext';
+import searchContext from '../utils/SearchContext';
 import './index.css';
 
 const ListContainer = () => {
-    const employees = useContext(employeeContext);
-    const [search, updateSearch] = useState({});
-
-    function handleSearch(event) {
-        updateSearch(event.target.value)
-    }
+    const searches = useContext(searchContext);
 
     return (
         <div className="row mt-0">
@@ -20,25 +15,25 @@ const ListContainer = () => {
                     </button>
                     <div className="collapse navbar-collapse" id="listNavContent">
                         <form className="form-inline my-2 my-lg-0">
-                            <input className="form-control mr-sm-2" type="search" onChange={handleSearch} placeholder="Search" aria-label="Search" />
+                            <input className="form-control mr-sm-2" type="search" onChange={(event) => searches.onChange("search", event.target.value)} placeholder="Search" aria-label="Search" value={searches.search}/>
                             <button className="btn btn-outline-secondary my-2 my-sm-0 mr-4" type="submit" onClick={(event) => {
                                 event.preventDefault();
-                                employees.onClick(search)
+                                searches.onClick(event.target.value)
                             }}>Search</button>
                             <div className="form-check">
-                                <input className="form-check-input mr-2" type="radio" onChange={() => employees.onChange("all")} name="filterRadios" id="allRadio" value="all" checked={employees.type === "all"} />
+                                <input className="form-check-input mr-2" type="radio" onChange={() => searches.onChange("all", "")} name="filterRadios" id="allRadio" value="all" checked={searches.type === "all"} />
                                 <label className="form-check-label mr-2" htmlFor="allRadio">
                                     All
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input mr-2" type="radio" onChange={() => employees.onChange("birthday")} name="filterRadios" id="bdayRadio" value="birthday" checked={employees.type === "birthday"} />
+                                <input className="form-check-input mr-2" type="radio" onChange={() => searches.onChange("birthday", "")} name="filterRadios" id="bdayRadio" value="birthday" checked={searches.type === "birthday"} />
                                 <label className="form-check-label mr-2" htmlFor="bdayRadio">
                                     Birthdays
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input mr-2" type="radio" onChange={() => employees.onChange("anniversary")} name="filterRadios" id="annivRadio" value="anniversary" checked={employees.type === "anniversary"} />
+                                <input className="form-check-input mr-2" type="radio" onChange={() => searches.onChange("anniversary", "")} name="filterRadios" id="annivRadio" value="anniversary" checked={searches.type === "anniversary"} />
                                 <label className="form-check-label mr-2" htmlFor="annivRadio">
                                     Anniversaries
                                 </label>
